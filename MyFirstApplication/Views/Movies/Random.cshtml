@@ -1,0 +1,29 @@
+﻿@*@model MyFirstApplication.Models.Movie*@
+@model MyFirstApplication.ViewModel.RandomViewmodel
+
+@using MyFirstApplication.Models
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    var classname = Model.customers.Count > 5 ? "popular" : null;
+}
+<h2 class="@classname">@*@(((Movie)ViewData["movie"]).Name)*@</h2>
+<h2 class="@classname">@Model.movie.Name</h2>
+
+@if (Model.customers.Count == 0)
+{
+    <textarea> No one has rented this movie before </textarea>
+}
+else
+{
+    <ul>
+        @foreach (var customer in Model.customers)
+        {
+            <li>@customer.Name</li>
+        }
+    </ul>
+}
+
